@@ -170,7 +170,7 @@ internal static class TUI
         for (int y = MetodRad; y < TotalRad - 1; y++)
             SkrivPå(0, y, $"║{kolTom}║{kolTom}║{kolTom}║");
 
-        SkrivPå(0, TotalRad - 1, $"╠{bred}╣");
+        SkrivPå(0, TotalRad - 1, $"╠{kolBred}╩{kolBred}╩{kolBred}╣");
         SkrivPå(0, TotalRad,     $"║{new string(' ', W - 2)}║");
         SkrivPå(0, TotalRad + 1, $"╚{bred}╝");
     }
