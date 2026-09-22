@@ -41,9 +41,9 @@ internal static class MarcusPlayground
             _e.MaxTal(1 << 2, 1 << 2, 1 << 2)  == 0b100);
 
         Σ(EasyResultat, "VändSträng", ref p, ref max,
-            _e.VändSträng("hund")  == "dnuh" &&
-            _e.VändSträng("A")     == "A"    &&
-            _e.VändSträng("abba")  == "abba");
+            _e.VändSträng("hund")   == "dnuh"  &&
+            _e.VändSträng("hello")  == "olleh" &&
+            _e.VändSträng("12345")  == "54321");
 
         Σ(EasyResultat, "MinTal", ref p, ref max,
             _e.MinTal(0b11, 0b101) == 0b11  &&
