@@ -53,4 +53,40 @@ public class Hard
 
         return resultat;
     }
+
+    // Returnera sant om n är ett primtal. 0 och 1 är inte primtal.
+    // ÄrPrimtal(7) => true    ÄrPrimtal(9) => false
+    public bool ÄrPrimtal(int n)
+    {
+        bool svar = false;
+
+        // Skriv din kod här
+
+
+        return svar;
+    }
+
+    // Beräkna bas upphöjt till exp utan att använda Math.Pow.
+    // Potens(2, 10) => 1024    Potens(3, 0) => 1
+    public long Potens(int bas, int exp)
+    {
+        long resultat = 1;
+
+        // Skriv din kod här
+
+
+        return resultat;
+    }
+
+    // Run-length encoding: komprimera upprepade tecken.
+    // RunLängd("aabbb") => "a2b3"    RunLängd("abc") => "a1b1c1"
+    public string RunLängd(string text)
+    {
+        string resultat = "";
+
+        // Skriv din kod här
+
+
+        return resultat;
+    }
 }

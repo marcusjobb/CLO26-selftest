@@ -31,7 +31,6 @@ internal static class TUI
         _temaFull = temaFull;
 
         InitKonsol();
-        RitaStjärnor();
         RitaGränssnitt();
 
         SkrivPå(X1 + 1, MetodRad, "[ beräknar... ]");
@@ -66,23 +65,6 @@ internal static class TUI
     }
 
     // -----------------------------------------------------------------------
-
-    private static void RitaStjärnor()
-    {
-        var rnd    = new Random();
-        var tecken = new[] { '·', '·', '·', '·', '·', '·', '·', '+', '*', '✦' };
-        Console.ForegroundColor = ConsoleColor.DarkCyan;
-
-        for (int i = 0; i < 180; i++)
-        {
-            int x = rnd.Next(1, W - 1);
-            int y = rnd.Next(1, H - 1);
-            SkrivPå(x, y, tecken[rnd.Next(tecken.Length)].ToString());
-            Thread.Sleep(6);
-        }
-
-        Console.ForegroundColor = ConsoleColor.Cyan;
-    }
 
     private static void InitKonsol()
     {

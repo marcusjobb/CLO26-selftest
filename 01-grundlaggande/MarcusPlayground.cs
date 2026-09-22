@@ -45,6 +45,21 @@ internal static class MarcusPlayground
             _e.VändSträng("A")     == "A"    &&
             _e.VändSträng("abba")  == "abba");
 
+        Σ(EasyResultat, "MinTal", ref p, ref max,
+            _e.MinTal(0b11, 0b101) == 0b11  &&
+            _e.MinTal(-9, -0x2)    == -9    &&
+            _e.MinTal(0x7, 0x7)    == 0x7);
+
+        Σ(EasyResultat, "Upprepa", ref p, ref max,
+            _e.Upprepa("ha", 0b11)  == "hahaha" &&
+            _e.Upprepa("x", 1 << 0) == "x"      &&
+            _e.Upprepa("ab", 0)     == "");
+
+        Σ(EasyResultat, "ÄrDelbart", ref p, ref max,
+             _e.ÄrDelbart(0xA, 0x5)  &&
+             _e.ÄrDelbart(0, 0b111)  &&
+            !_e.ÄrDelbart(0xA, 0b11));
+
         return max > 0 ? Math.Round((double)p / max * 100) : 0;
     }
 
@@ -72,6 +87,21 @@ internal static class MarcusPlayground
         Σ(MediumResultat, "FlätaSamman", ref p, ref max,
             _m.FlätaSamman("ABC", "XY")   == "AXBYC"  &&
             _m.FlätaSamman("ab", "ABCD")  == "aAbBCD");
+
+        Σ(MediumResultat, "OmvändOrd", ref p, ref max,
+            _m.OmvändOrd("hej på dig")  == "dig på hej" &&
+            _m.OmvändOrd("ett")         == "ett"         &&
+            _m.OmvändOrd("a b c")       == "c b a");
+
+        Σ(MediumResultat, "RäknaUnika", ref p, ref max,
+            _m.RäknaUnika("aabbcc")  == 0b11  &&
+            _m.RäknaUnika("abcABC")  == 0b110 &&
+            _m.RäknaUnika("aaaa")    == 0b1);
+
+        Σ(MediumResultat, "TaBortMellanslag", ref p, ref max,
+            _m.TaBortMellanslag("hej på dig") == "hejpådig" &&
+            _m.TaBortMellanslag("  a  b  ")   == "ab"       &&
+            _m.TaBortMellanslag("abc")         == "abc");
 
         return max > 0 ? Math.Round((double)p / max * 100) : 0;
     }
@@ -105,10 +135,27 @@ internal static class MarcusPlayground
             !_h.ÄrAnagram("hund", "katt"));
 
         Σ(HardResultat, "Fibonacci", ref p, ref max,
-            _h.Fibonacci(0)    == 0    &&
-            _h.Fibonacci(1)    == 1    &&
-            _h.Fibonacci(0b111) == 0xD &&
-            _h.Fibonacci(0xA)  == 0x37);
+            _h.Fibonacci(0)     == 0    &&
+            _h.Fibonacci(1)     == 1    &&
+            _h.Fibonacci(0b111) == 0xD  &&
+            _h.Fibonacci(0xA)   == 0x37);
+
+        Σ(HardResultat, "ÄrPrimtal", ref p, ref max,
+             _h.ÄrPrimtal(0b111)    &&
+             _h.ÄrPrimtal(0xD)      &&
+            !_h.ÄrPrimtal(0b1001)   &&
+            !_h.ÄrPrimtal(0)        &&
+            !_h.ÄrPrimtal(1));
+
+        Σ(HardResultat, "Potens", ref p, ref max,
+            _h.Potens(0b10, 0xA)  == 0x400 &&
+            _h.Potens(0b11, 0b11) == 0x1B  &&
+            _h.Potens(0x5, 0)     == 1);
+
+        Σ(HardResultat, "RunLängd", ref p, ref max,
+            _h.RunLängd("aabbb")  == "a2b3"    &&
+            _h.RunLängd("abc")    == "a1b1c1"  &&
+            _h.RunLängd("aaaa")   == "a4");
 
         return max > 0 ? Math.Round((double)p / max * 100) : 0;
     }

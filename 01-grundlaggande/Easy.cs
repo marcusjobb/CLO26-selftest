@@ -59,4 +59,39 @@ public class Easy
 
         return resultat;
     }
+
+    // Returnera det minsta av två tal.
+    public int MinTal(int a, int b)
+    {
+        int minst = a;
+
+        // Skriv din kod här
+
+
+        return minst;
+    }
+
+    // Upprepa texten det angivna antalet gånger.
+    // Upprepa("ha", 3) => "hahaha"
+    public string Upprepa(string text, int gånger)
+    {
+        string resultat = "";
+
+        // Skriv din kod här
+
+
+        return resultat;
+    }
+
+    // Returnera sant om 'tal' är jämnt delbart med 'delare'.
+    // ÄrDelbart(10, 5) => true    ÄrDelbart(10, 3) => false
+    public bool ÄrDelbart(int tal, int delare)
+    {
+        bool svar = false;
+
+        // Skriv din kod här
+
+
+        return svar;
+    }
 }

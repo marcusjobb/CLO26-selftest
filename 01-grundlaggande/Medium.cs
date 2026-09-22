@@ -51,4 +51,40 @@ public class Medium
 
         return resultat;
     }
+
+    // Vänd ordningsföljden på orden i meningen.
+    // OmvändOrd("hej på dig") => "dig på hej"
+    public string OmvändOrd(string mening)
+    {
+        string resultat = "";
+
+        // Skriv din kod här
+
+
+        return resultat;
+    }
+
+    // Räkna hur många unika tecken texten innehåller (skiftlägeskänslig).
+    // RäknaUnika("aabbcc") => 3    RäknaUnika("abcABC") => 6
+    public int RäknaUnika(string text)
+    {
+        int antal = 0;
+
+        // Skriv din kod här
+
+
+        return antal;
+    }
+
+    // Ta bort alla mellanslag från texten.
+    // TaBortMellanslag("hej på dig") => "hejpådig"
+    public string TaBortMellanslag(string text)
+    {
+        string resultat = "";
+
+        // Skriv din kod här
+
+
+        return resultat;
+    }
 }
