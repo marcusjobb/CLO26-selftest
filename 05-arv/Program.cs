@@ -76,20 +76,36 @@ internal static class Program
 
     private static void InitKonsol()
     {
-        try
+        if (OperatingSystem.IsWindows())
         {
-            if (OperatingSystem.IsWindows())
-            {
-                Console.WindowHeight = H;
-                Console.WindowWidth  = W;
-            }
+            try { Console.WindowHeight = H; Console.WindowWidth = W; }
+            catch { }
         }
-        catch { }
+        else
+        {
+            // Linux/macOS: xterm-kompatibel ANSI-escape för fönsterstorlek
+            Console.Write($"\x1b[8;{H};{W}t");
+            Thread.Sleep(150);
+        }
 
         Console.BackgroundColor = ConsoleColor.DarkBlue;
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.CursorVisible   = false;
         Console.Clear();
+
+        if (Console.WindowWidth < W)
+        {
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine($"  Terminalen är {Console.WindowWidth} kolumner bred — programmet behöver {W}.");
+            Console.WriteLine($"  Gör terminalfönstret bredare och tryck Enter.");
+            Console.ReadLine();
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Clear();
+        }
     }
 
     private static void RitaGränssnitt()
