@@ -46,8 +46,8 @@ internal static class MarcusPlayground
             _e.VändSträng("12345")  == "54321");
 
         Σ(EasyResultat, "MinTal", ref p, ref max,
-            _e.MinTal(0b11, 0b101) == 0b11  &&
-            _e.MinTal(-9, -0x2)    == -9    &&
+            _e.MinTal(0b101, 0b11) == 0b11  &&   // b större → a ska INTE vinna
+            _e.MinTal(-0x2, -9)    == -9    &&   // b är negativ och minst
             _e.MinTal(0x7, 0x7)    == 0x7);
 
         Σ(EasyResultat, "Upprepa", ref p, ref max,
