@@ -66,22 +66,18 @@ internal static class MarcusPlayground
         HardResultat.Clear();
         int p = 0, max = 0;
 
-        // Bil — bensinkostnad: (km/10) * litrePerMil * 18
         Σ(HardResultat, "Bil — BeräknaKostnad", ref p, ref max,
             new Bil("Volvo", "V70", 0b111).BeräknaKostnad(0x64)    == 0x64 / 10.0 * 0b111 * 18 &&
             new Bil("Saab", "93", 0b1000).BeräknaKostnad(0x32)    == 0x32 / 10.0 * 0b1000 * 18);
 
-        // Elfordon — elkostnad: (km/10) * kwhPerMil * 1.5
         Σ(HardResultat, "Elfordon — BeräknaKostnad", ref p, ref max,
             Math.Abs(new Elfordon("Tesla", "3", 0b10100).BeräknaKostnad(0x64) -
                      (0x64 / 10.0 * 0b10100 * 1.5)) < 0.01);
 
-        // Hyrbil — base + dagsPris
         Σ(HardResultat, "Hyrbil — BeräknaKostnad", ref p, ref max,
             new Hyrbil("Ford", "Focus", 0b111, 0x1F4).BeräknaKostnad(0x64) ==
             (0x64 / 10.0 * 0b111 * 18) + 0x1F4);
 
-        // Presentation (ärvd metod)
         Σ(HardResultat, "Fordon — Presentation", ref p, ref max,
             new Bil("Volvo", "V70", 0b111).Presentation()   == "Volvo V70"  &&
             new Elfordon("Tesla", "3", 0xF).Presentation()  == "Tesla 3");

@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-klasser-och-objekt", "04
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-arv", "05-arv\CSharpRepetition.csproj", "{B8314BA5-DA7E-42A7-8EE7-A99996357B36}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06-yatzy", "06-yatzy\CSharpRepetition.csproj", "{C2A1F834-9E7B-4D5C-AF23-7B4E31D8A052}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07-blackjack", "07-blackjack\CSharpRepetition.csproj", "{D5F28B61-A3C4-4E8F-BC47-9E5A62F1B073}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,5 +43,13 @@ Global
 		{B8314BA5-DA7E-42A7-8EE7-A99996357B36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8314BA5-DA7E-42A7-8EE7-A99996357B36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8314BA5-DA7E-42A7-8EE7-A99996357B36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2A1F834-9E7B-4D5C-AF23-7B4E31D8A052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2A1F834-9E7B-4D5C-AF23-7B4E31D8A052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2A1F834-9E7B-4D5C-AF23-7B4E31D8A052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2A1F834-9E7B-4D5C-AF23-7B4E31D8A052}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5F28B61-A3C4-4E8F-BC47-9E5A62F1B073}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5F28B61-A3C4-4E8F-BC47-9E5A62F1B073}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5F28B61-A3C4-4E8F-BC47-9E5A62F1B073}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5F28B61-A3C4-4E8F-BC47-9E5A62F1B073}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

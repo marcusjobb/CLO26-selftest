@@ -25,16 +25,16 @@ internal static class MarcusPlayground
             _e.Summera([-1, 1])               == 0);
 
         Σ(EasyResultat, "HittaMax", ref p, ref max,
-            _e.HittaMax([3, 1, 0xF, 7, 2])       == 0xF  &&
-            _e.HittaMax([-5, -2, -9])             == -2   &&
-            _e.HittaMax([0b1])                    == 1);
+            _e.HittaMax([3, 1, 0xF, 7, 2])   == 0xF  &&
+            _e.HittaMax([-5, -2, -9])         == -2   &&
+            _e.HittaMax([0b1])                == 1);
 
         {
             int[] Λ = [1, 2, 3];
             int[] Ω = _e.VändArray(Λ);
             Σ(EasyResultat, "VändArray", ref p, ref max,
-                Ω.Length == Λ.Length                                     &&
-                Ω[0] == 3 && Ω[^1] == 1                                  &&
+                Ω.Length == Λ.Length                                      &&
+                Ω[0] == 3 && Ω[^1] == 1                                   &&
                 _e.VändArray([0b101, 0b1010]).SequenceEqual([0xA, 0b101]));
         }
 
@@ -46,6 +46,18 @@ internal static class MarcusPlayground
         Σ(EasyResultat, "SummeraJämna", ref p, ref max,
             _e.SummeraJämna([1, 0b10, 3, 0b100, 5, 0b110]) == 0b1100 &&
             _e.SummeraJämna([1, 3, 5])                       == 0);
+
+        Σ(EasyResultat, "SplittaPåToken", ref p, ref max,
+            _e.SplittaPåToken("marcus|pelle|kalle", '|')
+                .SequenceEqual(["marcus", "pelle", "kalle"])          &&
+            _e.SplittaPåToken("a,b,c", ',')
+                .SequenceEqual(["a", "b", "c"])                       &&
+            _e.SplittaPåToken("ett", '|').SequenceEqual(["ett"]));
+
+        Σ(EasyResultat, "DictionaryTillLista", ref p, ref max,
+            _e.DictionaryTillLista(new Dictionary<string, int> { ["Rex"] = 0x55 })
+                .Contains("Rex: 85")                                   &&
+            _e.DictionaryTillLista(new Dictionary<string, int>()).Count == 0);
 
         return max > 0 ? Math.Round((double)p / max * 100) : 0;
     }
@@ -66,9 +78,9 @@ internal static class MarcusPlayground
                 Ω.Sum() == Λ.Sum());
         }
 
-        Σ(MediumResultat, "TaBortDublikat", ref p, ref max,
-            _m.TaBortDublikat([1, 0b10, 0b10, 3, 1]).SequenceEqual([1, 0b10, 3]) &&
-            _m.TaBortDublikat([0xA, 0xA, 0xA]).SequenceEqual([0xA]));
+        Σ(MediumResultat, "TaBortDuplikat", ref p, ref max,
+            _m.TaBortDuplikat([1, 0b10, 0b10, 3, 1]).SequenceEqual([1, 0b10, 3]) &&
+            _m.TaBortDuplikat([0xA, 0xA, 0xA]).SequenceEqual([0xA]));
 
         {
             int[] Ω = _m.RoteraTillHöger([1, 0b10, 3, 0b100, 5], 0b10);
@@ -79,6 +91,58 @@ internal static class MarcusPlayground
         Σ(MediumResultat, "FiltreraStörreÄn", ref p, ref max,
             _m.FiltreraStörreÄn([1, 5, 2, 8, 3], 0b100).SequenceEqual([5, 8]) &&
             _m.FiltreraStörreÄn([1, 2, 3], 0xA).Count == 0);
+
+        {
+            var dict = _m.ListaTillDictionary(["hund", "katt", "hund", "fisk"]);
+            Σ(MediumResultat, "ListaTillDictionary", ref p, ref max,
+                dict["hund"] == 0b10 &&
+                dict["katt"] == 1    &&
+                dict["fisk"] == 1    &&
+                dict.Count   == 0b11);
+        }
+
+        Σ(MediumResultat, "FiltreraNamnMedBokstav", ref p, ref max,
+            _m.FiltreraNamnMedBokstav(["Marcus", "James", "Evelyn"], 's')
+                .SequenceEqual(["Marcus", "James"])                              &&
+            _m.FiltreraNamnMedBokstav(["Ana", "Bo", "Ci"], 'z').Count == 0);
+
+        {
+            var (a, b) = _m.DelaIMitten([1, 0b10, 3, 0b100, 5, 0b110]);
+            var (c, d) = _m.DelaIMitten([1, 0b10, 3, 0b100, 5]);
+            Σ(MediumResultat, "DelaIMitten", ref p, ref max,
+                a.SequenceEqual([1, 0b10, 3])      &&
+                b.SequenceEqual([0b100, 5, 0b110]) &&
+                c.SequenceEqual([1, 0b10])         &&
+                d.SequenceEqual([3, 0b100, 5]));
+        }
+
+        {
+            Queue<string> kö = new(["a", "b", "c"]);
+            Σ(MediumResultat, "QueueTillLista", ref p, ref max,
+                _m.QueueTillLista(kö).SequenceEqual(["a", "b", "c"]));
+        }
+
+        {
+            var kö = _m.ListaTillQueue(["x", "y", "z"]);
+            Σ(MediumResultat, "ListaTillQueue", ref p, ref max,
+                kö.Dequeue() == "x" &&
+                kö.Dequeue() == "y" &&
+                kö.Dequeue() == "z");
+        }
+
+        {
+            Stack<string> stack = new(["c", "b", "a"]);   // "a" överst
+            Σ(MediumResultat, "StackTillLista", ref p, ref max,
+                _m.StackTillLista(stack).SequenceEqual(["a", "b", "c"]));
+        }
+
+        {
+            var stack = _m.ListaTillStack(["a", "b", "c"]);
+            Σ(MediumResultat, "ListaTillStack", ref p, ref max,
+                stack.Pop() == "c" &&
+                stack.Pop() == "b" &&
+                stack.Pop() == "a");
+        }
 
         return max > 0 ? Math.Round((double)p / max * 100) : 0;
     }
@@ -96,9 +160,9 @@ internal static class MarcusPlayground
             _h.BinärSökning([0b1], 0b1)                     == 0);
 
         Σ(HardResultat, "HittaMissat", ref p, ref max,
-            _h.HittaMissat([1, 2, 0b100, 5], 0b101)       == 0b11 &&
-            _h.HittaMissat([2, 3, 4, 5], 0b101)           == 1    &&
-            _h.HittaMissat([1, 2, 3, 4], 0b101)           == 0b101);
+            _h.HittaMissat([1, 2, 0b100, 5], 0b101)  == 0b11 &&
+            _h.HittaMissat([2, 3, 4, 5], 0b101)      == 1    &&
+            _h.HittaMissat([1, 2, 3, 4], 0b101)      == 0b101);
 
         {
             int[] Ω = _h.MergeaSorterade([1, 3, 5], [2, 4, 6]);
@@ -111,6 +175,22 @@ internal static class MarcusPlayground
         Σ(HardResultat, "ForaBort", ref p, ref max,
             _h.ForaBort([1, 2, 3, 4, 5, 6], 0b11).SequenceEqual([1, 2, 4, 5]) &&
             _h.ForaBort([2, 4, 6, 8], 0b10).Count == 0);
+
+        {
+            var böcker = new Dictionary<string, string[]>
+            {
+                ["Tolkien"] = ["Ringarnas Herre", "Hobbiten"],
+                ["King"]    = ["IT", "The Shining"],
+            };
+            Σ(HardResultat, "HittaFörfattare", ref p, ref max,
+                _h.HittaFörfattare(böcker, "Hobbiten")     == "Tolkien" &&
+                _h.HittaFörfattare(böcker, "IT")           == "King"    &&
+                _h.HittaFörfattare(böcker, "Osynlig bok")  == "");
+        }
+
+        Σ(HardResultat, "ÄndraStorlek", ref p, ref max,
+            _h.ÄndraStorlek([1, 0b10, 3], 0b101).SequenceEqual([1, 0b10, 3, 0, 0]) &&
+            _h.ÄndraStorlek([1, 0b10, 3, 0b100, 5], 0b11).SequenceEqual([1, 0b10, 3]));
 
         return max > 0 ? Math.Round((double)p / max * 100) : 0;
     }

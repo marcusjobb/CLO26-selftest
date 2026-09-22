@@ -76,24 +76,24 @@ internal static class TUI
             " ,   (  - )>",
             " )`~~'   (",
             "(  .__)   )",
-            " `-.____,' hjw",
+            " `-.____,'",
         ];
         Console.ForegroundColor = ConsoleColor.Yellow;
         for (int i = 0; i < anka.Length; i++)
             SkrivPå(2, 3 + i, anka[i]);
 
-        // Programmerare (höger om titeln)
+        // Glasgubbe med glasögon (höger om titeln)
         string[] gubbe =
         [
             "///-\\\\\\",
-            "|^   ^|",
-            "|O   O|",
-            "|  ~ *slap*!",
-            " \\ O /",
+            "|(o)(o)|",
+            "|  v  |",
+            " \\---/",
             "  | |",
+            " / \\",
         ];
         Console.ForegroundColor = ConsoleColor.White;
-        int x = W - 2 - 12;   // högerpassad mot inner-kanten
+        int x = W - 2 - 8;   // högerpassad, längsta rad = 8 tecken
         for (int i = 0; i < gubbe.Length; i++)
             SkrivPå(x, 2 + i, gubbe[i]);
 

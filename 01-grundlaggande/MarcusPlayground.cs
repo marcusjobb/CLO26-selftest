@@ -40,11 +40,6 @@ internal static class MarcusPlayground
             _e.MaxTal(-5, -(1 << 1), -9)       == -(0b10) &&
             _e.MaxTal(1 << 2, 1 << 2, 1 << 2)  == 0b100);
 
-        Σ(EasyResultat, "VändSträng", ref p, ref max,
-            _e.VändSträng("hund")   == "dnuh"  &&
-            _e.VändSträng("hello")  == "olleh" &&
-            _e.VändSträng("12345")  == "54321");
-
         Σ(EasyResultat, "MinTal", ref p, ref max,
             _e.MinTal(0b101, 0b11) == 0b11  &&   // b större → a ska INTE vinna
             _e.MinTal(-0x2, -9)    == -9    &&   // b är negativ och minst
@@ -70,38 +65,25 @@ internal static class MarcusPlayground
         MediumResultat.Clear();
         int p = 0, max = 0;
 
-        Σ(MediumResultat, "RäknaVokaler", ref p, ref max,
-            _m.RäknaVokaler("hej")   == 1     &&
-            _m.RäknaVokaler("åäö")   == 0b11  &&
-            _m.RäknaVokaler("AEIOU") == 0b101);
+        Σ(MediumResultat, "Medelvärde", ref p, ref max,
+            Math.Abs(_m.Medelvärde(0b100, 0b1000, 0b110) - 6.0) < 0.01 &&
+            Math.Abs(_m.Medelvärde(1, 2, 0b11)            - 2.0) < 0.01 &&
+            Math.Abs(_m.Medelvärde(0, 0, 0)               - 0.0) < 0.01);
 
-        Σ(MediumResultat, "ÄrPalindrom", ref p, ref max,
-             _m.ÄrPalindrom("tacocat") &&
-             _m.ÄrPalindrom("Anna")    &&
-            !_m.ÄrPalindrom("hund"));
+        Σ(MediumResultat, "Median", ref p, ref max,
+            _m.Median(0b11, 1, 0b10)    == 0b10 &&
+            _m.Median(0xA, 0xA, 0xA)   == 0xA  &&
+            _m.Median(0b101, 0b1, 0b11) == 0b11);
 
-        Σ(MediumResultat, "SummeraJämna", ref p, ref max,
-            _m.SummeraJämna([1, 0b10, 3, 0b100, 5, 0b110]) == 0b1100 &&
-            _m.SummeraJämna([1, 3, 5]) == 0);
+        Σ(MediumResultat, "SummeraSiffror", ref p, ref max,
+            _m.SummeraSiffror(0x4D2)  == 0xA   &&
+            _m.SummeraSiffror(0x63)   == 0x12  &&
+            _m.SummeraSiffror(0b111)  == 0b111);
 
-        Σ(MediumResultat, "FlätaSamman", ref p, ref max,
-            _m.FlätaSamman("ABC", "XY")   == "AXBYC"  &&
-            _m.FlätaSamman("ab", "ABCD")  == "aAbBCD");
-
-        Σ(MediumResultat, "OmvändOrd", ref p, ref max,
-            _m.OmvändOrd("hej på dig")  == "dig på hej" &&
-            _m.OmvändOrd("ett")         == "ett"         &&
-            _m.OmvändOrd("a b c")       == "c b a");
-
-        Σ(MediumResultat, "RäknaUnika", ref p, ref max,
-            _m.RäknaUnika("aabbcc")  == 0b11  &&
-            _m.RäknaUnika("abcABC")  == 0b110 &&
-            _m.RäknaUnika("aaaa")    == 0b1);
-
-        Σ(MediumResultat, "TaBortMellanslag", ref p, ref max,
-            _m.TaBortMellanslag("hej på dig") == "hejpådig" &&
-            _m.TaBortMellanslag("  a  b  ")   == "ab"       &&
-            _m.TaBortMellanslag("abc")         == "abc");
+        Σ(MediumResultat, "GGD", ref p, ref max,
+            _m.GGD(0xC, 0b1000) == 0b100 &&   // 12,8 → 4
+            _m.GGD(0b111, 0xD)  == 1     &&   // 7,13 → 1
+            _m.GGD(0x14, 0b101) == 0b101);    // 20,5 → 5
 
         return max > 0 ? Math.Round((double)p / max * 100) : 0;
     }
@@ -112,27 +94,6 @@ internal static class MarcusPlayground
     {
         HardResultat.Clear();
         int p = 0, max = 0;
-
-        Σ(HardResultat, "CaesarChiffer", ref p, ref max,
-            _h.CaesarChiffer("Abc", 3)             == "Def"           &&
-            _h.CaesarChiffer("Xyz", 3)             == "Abc"           &&
-            _h.CaesarChiffer("Hello, World!", 0xD) == "Uryyb, Jbeyq!");
-
-        // BubbelSortera — kontrollera att arrayen är sorterad utan att visa svaret
-        {
-            int[] Λ = [5, 2, 8, 1, 9, 3];
-            int[] Ω = _h.BubbelSortera(Λ);
-            bool ok = Ω.Length == Λ.Length                               &&
-                      Ω.Zip(Ω.Skip(1), (a, b) => a <= b).All(x => x)    &&
-                      Ω.Sum() == Λ.Sum()                                 &&
-                      _h.BubbelSortera([0b1]).SequenceEqual([0b1]);
-            Σ(HardResultat, "BubbelSortera", ref p, ref max, ok);
-        }
-
-        Σ(HardResultat, "ÄrAnagram", ref p, ref max,
-             _h.ÄrAnagram("lyssna", "nyassl")          &&
-             _h.ÄrAnagram("Astronomer", "Moon starer") &&
-            !_h.ÄrAnagram("hund", "katt"));
 
         Σ(HardResultat, "Fibonacci", ref p, ref max,
             _h.Fibonacci(0)     == 0    &&
@@ -151,11 +112,6 @@ internal static class MarcusPlayground
             _h.Potens(0b10, 0xA)  == 0x400 &&
             _h.Potens(0b11, 0b11) == 0x1B  &&
             _h.Potens(0x5, 0)     == 1);
-
-        Σ(HardResultat, "RunLängd", ref p, ref max,
-            _h.RunLängd("aabbb")  == "a2b3"    &&
-            _h.RunLängd("abc")    == "a1b1c1"  &&
-            _h.RunLängd("aaaa")   == "a4");
 
         return max > 0 ? Math.Round((double)p / max * 100) : 0;
     }

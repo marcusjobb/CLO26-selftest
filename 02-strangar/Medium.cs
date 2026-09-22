@@ -51,4 +51,83 @@ public class Medium
 
         return resultat;
     }
+
+    // Sortera bokstäverna i ett ord (ta bort mellanslag, sedan sortera).
+    // SorteraBokstäver("marcus") => "acmrsu"
+    // SorteraBokstäver("min katt") => "aikmntt"
+    public string SorteraBokstäver(string text)
+    {
+        string resultat = "";
+
+        // Skriv din kod här
+
+
+        return resultat;
+    }
+
+    // Extrahera en del av texten med start och längd.
+    // Extrahera("min katt sover", 4, 4) => "katt"
+    public string Extrahera(string text, int start, int längd)
+    {
+        string resultat = "";
+
+        // Skriv din kod här
+
+
+        return resultat;
+    }
+
+    // Växla versaler i alternerande mönster: varannan stor, varannan liten (börja med stor).
+    // VäxlaVersaler("katt") => "KaTt"
+    // VäxlaVersaler("hund") => "HuNd"
+    public string VäxlaVersaler(string text)
+    {
+        string resultat = "";
+
+        // Skriv din kod här
+
+
+        return resultat;
+    }
+
+    // Dela texten i bitar om x tecken och returnera som lista.
+    // Den sista biten kan vara kortare om texten inte går jämnt upp.
+    // DelaIBitar("Min katt är svart", 4) => ["Min ", "katt", " är ", "svar", "t"]
+    public List<string> DelaIBitar(string text, int bitlängd)
+    {
+        List<string> bitar = [];
+
+        // Skriv din kod här
+
+
+        return bitar;
+    }
+
+    // Returnera tecknet som följer direkt efter det givna tecknet (första förekomsten).
+    // Returnera null om tecknet inte finns eller är sist i strängen.
+    // NästaBokstav("Taylor Swift", 'S') => 'w'
+    // NästaBokstav("hund", 'd') => null
+    public char? NästaBokstav(string text, char tecken)
+    {
+        char? nästa = null;
+
+        // Skriv din kod här
+
+
+        return nästa;
+    }
+
+    // Returnera tecknet som föregår det givna tecknet (första förekomsten).
+    // Returnera null om tecknet inte finns eller är det första i strängen.
+    // FöregångandeBokstav("Taylor Swift", 'S') => ' '
+    // FöregångandeBokstav("hund", 'h') => null
+    public char? FöregångandeBokstav(string text, char tecken)
+    {
+        char? föregående = null;
+
+        // Skriv din kod här
+
+
+        return föregående;
+    }
 }

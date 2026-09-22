@@ -2,34 +2,33 @@ namespace CSharpRepetition;
 
 public class Medium
 {
-    // Räkna hur många vokaler texten innehåller (a, e, i, o, u, y, å, ä, ö).
-    // Ignorera skillnad mellan stora och små bokstäver.
-    public int RäknaVokaler(string text)
+    // Beräkna medelvärdet av tre tal.
+    // Medelvärde(4, 8, 6) => 6.0
+    public double Medelvärde(double a, double b, double c)
     {
-        int antal = 0;
+        double resultat = 0;
 
         // Skriv din kod här
 
 
-        return antal;
+        return resultat;
     }
 
-    // Kontrollera om ordet är ett palindrom (läses likadant framifrån och bakifrån).
-    // Ignorera skillnad mellan stora och små bokstäver.
-    // ÄrPalindrom("Anna") => true
-    public bool ÄrPalindrom(string ord)
+    // Returnera medianen (mittvärdet) av tre tal.
+    // Median(3, 1, 2) => 2    Median(5, 5, 5) => 5
+    public int Median(int a, int b, int c)
     {
-        bool svar = false;
+        int resultat = 0;
 
         // Skriv din kod här
 
 
-        return svar;
+        return resultat;
     }
 
-    // Returnera summan av alla JÄMNA tal i arrayen.
-    // SummeraJämna([1, 2, 3, 4, 5, 6]) => 12
-    public int SummeraJämna(int[] tal)
+    // Summera alla siffror i ett heltal (utan att omvandla till sträng).
+    // SummeraSiffror(1234) => 1+2+3+4 = 10    SummeraSiffror(99) => 18
+    public int SummeraSiffror(int n)
     {
         int summa = 0;
 
@@ -39,48 +38,11 @@ public class Medium
         return summa;
     }
 
-    // Fläta ihop två strängar varannan bokstav.
-    // FlätaSamman("ABC", "XY") => "AXBYC"
-    // Om en sträng är kortare fortsätter den längre strängens tecken direkt.
-    public string FlätaSamman(string a, string b)
+    // Returnera största gemensamma delare (GGD) för a och b.
+    // GGD(12, 8) => 4    GGD(7, 13) => 1
+    public int GGD(int a, int b)
     {
-        string resultat = "";
-
-        // Skriv din kod här
-
-
-        return resultat;
-    }
-
-    // Vänd ordningsföljden på orden i meningen.
-    // OmvändOrd("hej på dig") => "dig på hej"
-    public string OmvändOrd(string mening)
-    {
-        string resultat = "";
-
-        // Skriv din kod här
-
-
-        return resultat;
-    }
-
-    // Räkna hur många unika tecken texten innehåller (skiftlägeskänslig).
-    // RäknaUnika("aabbcc") => 3    RäknaUnika("abcABC") => 6
-    public int RäknaUnika(string text)
-    {
-        int antal = 0;
-
-        // Skriv din kod här
-
-
-        return antal;
-    }
-
-    // Ta bort alla mellanslag från texten.
-    // TaBortMellanslag("hej på dig") => "hejpådig"
-    public string TaBortMellanslag(string text)
-    {
-        string resultat = "";
+        int resultat = 0;
 
         // Skriv din kod här
 

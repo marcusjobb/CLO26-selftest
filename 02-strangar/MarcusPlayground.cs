@@ -42,9 +42,29 @@ internal static class MarcusPlayground
             _e.VäxlaSkiftläge("123")  == "123");
 
         Σ(EasyResultat, "RäknaOrd", ref p, ref max,
-            _e.RäknaOrd("hej du där")      == 0b11    &&
-            _e.RäknaOrd("ett")             == 1       &&
-            _e.RäknaOrd("  flera   blankt ") == 0b11);
+            _e.RäknaOrd("hej du där")        == 0b11  &&
+            _e.RäknaOrd("ett")               == 1     &&
+            _e.RäknaOrd("  flera   blankt ") == 0b10);
+
+        Σ(EasyResultat, "RäknaChar", ref p, ref max,
+            _e.RäknaChar("Happaranda", 'a')  == 0b100 &&
+            _e.RäknaChar("mississippi", 's') == 0b100 &&
+            _e.RäknaChar("hund", 'z')        == 0);
+
+        Σ(EasyResultat, "FörstaXTecken", ref p, ref max,
+            _e.FörstaXTecken("En lång sommar", 0b10) == "En"    &&
+            _e.FörstaXTecken("hej", 0b11)            == "hej"   &&
+            _e.FörstaXTecken("abc", 1)               == "a");
+
+        Σ(EasyResultat, "SistaXTecken", ref p, ref max,
+            _e.SistaXTecken("Hon dansade i regnet", 0b11) == "net" &&
+            _e.SistaXTecken("hej", 0b11)                  == "hej" &&
+            _e.SistaXTecken("abc", 1)                     == "c");
+
+        Σ(EasyResultat, "HittaPosition", ref p, ref max,
+            _e.HittaPosition("katt", 'a')  == 1  &&
+            _e.HittaPosition("hund", 'h')  == 0  &&
+            _e.HittaPosition("hund", 'z')  == -1);
 
         return max > 0 ? Math.Round((double)p / max * 100) : 0;
     }
@@ -72,9 +92,42 @@ internal static class MarcusPlayground
             _m.VarannanBokstav("Nelson", "Mandela") == "NMealnsdoenla");
 
         Σ(MediumResultat, "VändOrdning", ref p, ref max,
-            _m.VändOrdning("hej du där")  == "där du hej"    &&
-            _m.VändOrdning("ett")         == "ett"           &&
+            _m.VändOrdning("hej du där")  == "där du hej" &&
+            _m.VändOrdning("ett")         == "ett"        &&
             _m.VändOrdning("a b c d")     == "d c b a");
+
+        Σ(MediumResultat, "SorteraBokstäver", ref p, ref max,
+            _m.SorteraBokstäver("marcus") == "acmrsu"   &&
+            _m.SorteraBokstäver("ba")     == "ab"       &&
+            _m.SorteraBokstäver("zyx ab") == "abxyz");
+
+        Σ(MediumResultat, "Extrahera", ref p, ref max,
+            _m.Extrahera("min katt sover", 0b100, 0b100) == "katt" &&
+            _m.Extrahera("abcdef", 0, 0b11)              == "abc"  &&
+            _m.Extrahera("hej", 1, 0b10)                 == "ej");
+
+        Σ(MediumResultat, "VäxlaVersaler", ref p, ref max,
+            _m.VäxlaVersaler("katt") == "KaTt" &&
+            _m.VäxlaVersaler("hund") == "HuNd" &&
+            _m.VäxlaVersaler("ab")   == "Ab");
+
+        Σ(MediumResultat, "DelaIBitar", ref p, ref max,
+            _m.DelaIBitar("Min katt är svart", 0b100)
+                .SequenceEqual(["Min ", "katt", " är ", "svar", "t"]) &&
+            _m.DelaIBitar("abcde", 0b10)
+                .SequenceEqual(["ab", "cd", "e"]));
+
+        Σ(MediumResultat, "NästaBokstav", ref p, ref max,
+            _m.NästaBokstav("Taylor Swift", 'S') == 'w'  &&
+            _m.NästaBokstav("katt", 'a')         == 't'  &&
+            _m.NästaBokstav("hund", 'z')         == null &&
+            _m.NästaBokstav("hund", 'd')         == null);
+
+        Σ(MediumResultat, "FöregångandeBokstav", ref p, ref max,
+            _m.FöregångandeBokstav("Taylor Swift", 'S') == ' '  &&
+            _m.FöregångandeBokstav("katt", 'a')         == 'k'  &&
+            _m.FöregångandeBokstav("hund", 'z')         == null &&
+            _m.FöregångandeBokstav("hund", 'h')         == null);
 
         return max > 0 ? Math.Round((double)p / max * 100) : 0;
     }

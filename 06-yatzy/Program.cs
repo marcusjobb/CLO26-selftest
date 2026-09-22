@@ -10,8 +10,8 @@ namespace CSharpRepetition;
 
 internal static class Program
 {
-    private const string Tema     = "STRING";  // ASCII, renderas som Figlet
-    private const string TemaFull = "Strängar";  // Visas under Figlet
+    private const string Tema     = "YATZY";
+    private const string TemaFull = "Yatzy";
 
     private static void Main()
     {

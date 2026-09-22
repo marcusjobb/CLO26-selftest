@@ -4,6 +4,7 @@ public class Easy
 {
     // Räkna ut totalt antal sittplatser.
     // Enkla stolar = 1 plats, dubbla stolar = 2 platser.
+    // RäknaSittplatser(3, 2) => 7
     public int RäknaSittplatser(int enkla, int dubbla)
     {
         int summa = 0;
@@ -15,6 +16,7 @@ public class Easy
     }
 
     // Returnera sant om talet är jämnt, annars falskt.
+    // ÄrJämnt(4) => true   ÄrJämnt(7) => false
     public bool ÄrJämnt(int tal)
     {
         bool svar = false;
@@ -38,6 +40,7 @@ public class Easy
     }
 
     // Returnera det största av tre tal.
+    // MaxTal(1, 5, 3) => 5
     public int MaxTal(int a, int b, int c)
     {
         int störst = a;
@@ -48,19 +51,8 @@ public class Easy
         return störst;
     }
 
-    // Vänd på strängen och returnera den baklänges.
-    // VändSträng("hund") => "dnuh"
-    public string VändSträng(string text)
-    {
-        string resultat = "";
-
-        // Skriv din kod här
-
-
-        return resultat;
-    }
-
     // Returnera det minsta av två tal.
+    // MinTal(7, 3) => 3
     public int MinTal(int a, int b)
     {
         int minst = a;

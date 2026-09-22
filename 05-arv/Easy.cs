@@ -60,6 +60,8 @@ public class Papegoja : Djur
         // Skriv din kod här — spara 'läte' så LåtSom kan använda det
     }
 
+    // Returnerar det läte som angavs i konstruktorn.
+    // new Papegoja("Polly", "Polly vill ha kex!").LåtSom() => "Polly vill ha kex!"
     public override string LåtSom()
     {
         // Skriv din kod här

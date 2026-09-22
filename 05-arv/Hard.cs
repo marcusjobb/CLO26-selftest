@@ -31,6 +31,7 @@ public class Bil : Fordon
         // Skriv din kod här
     }
 
+    // Bil("Volvo","V70", 0.7).BeräknaKostnad(100) => 100/10 × 0.7 × 18 = 126.0
     public override double BeräknaKostnad(int km)
     {
         // Skriv din kod här
@@ -48,6 +49,7 @@ public class Elfordon : Fordon
         // Skriv din kod här
     }
 
+    // Elfordon("Tesla","3", 2.0).BeräknaKostnad(100) => 100/10 × 2.0 × 1.5 = 30.0
     public override double BeräknaKostnad(int km)
     {
         // Skriv din kod här
@@ -66,6 +68,7 @@ public class Hyrbil : Bil
         // Skriv din kod här
     }
 
+    // Hyrbil("Ford","Focus", 0.7, 500).BeräknaKostnad(100) => 126.0 + 500 = 626.0
     public override double BeräknaKostnad(int km)
     {
         // Skriv din kod här
