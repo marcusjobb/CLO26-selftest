@@ -32,6 +32,7 @@ internal static class TUI
 
         InitKonsol();
         RitaGränssnitt();
+        RitaAsciiKonst();
 
         SkrivPå(X1 + 1, MetodRad, "[ beräknar... ]");
         SkrivPå(X2 + 1, MetodRad, "[ beräknar... ]");
@@ -65,6 +66,39 @@ internal static class TUI
     }
 
     // -----------------------------------------------------------------------
+
+    private static void RitaAsciiKonst()
+    {
+        // Gummianka (vänster om titeln)
+        string[] anka =
+        [
+            "      ,~~.",
+            " ,   (  - )>",
+            " )`~~'   (",
+            "(  .__)   )",
+            " `-.____,' hjw",
+        ];
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        for (int i = 0; i < anka.Length; i++)
+            SkrivPå(2, 3 + i, anka[i]);
+
+        // Programmerare (höger om titeln)
+        string[] gubbe =
+        [
+            "///-\\\\\\",
+            "|^   ^|",
+            "|O   O|",
+            "|  ~ *slap*!",
+            " \\ O /",
+            "  | |",
+        ];
+        Console.ForegroundColor = ConsoleColor.White;
+        int x = W - 2 - 12;   // högerpassad mot inner-kanten
+        for (int i = 0; i < gubbe.Length; i++)
+            SkrivPå(x, 2 + i, gubbe[i]);
+
+        Console.ForegroundColor = ConsoleColor.Cyan;
+    }
 
     private static void InitKonsol()
     {
