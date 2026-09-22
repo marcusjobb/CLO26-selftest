@@ -1,0 +1,12 @@
+bin/
+obj/
+*.user
+
+# Rider — ignorera allt utom run-konfigurationer
+.idea/*
+!.idea/.idea.CLO26-selftest/
+.idea/.idea.CLO26-selftest/*
+!.idea/.idea.CLO26-selftest/.idea/
+.idea/.idea.CLO26-selftest/.idea/*
+!.idea/.idea.CLO26-selftest/.idea/runConfigurations/
+!.idea/.idea.CLO26-selftest/.idea/runConfigurations/*.xml
