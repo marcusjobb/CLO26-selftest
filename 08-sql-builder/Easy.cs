@@ -6,10 +6,7 @@ public class Easy
     // Create_Select("Users", "Name", "Alice") => "SELECT * FROM Users WHERE Name = 'Alice'"
     public string Create_Select(string table, string field, string value)
     {
-        string sql = "";
-
-        // Skriv din kod här
-
+        string sql = $"Select {field} from {table} where {value} = 'Alice'";
 
         return sql;
     }
